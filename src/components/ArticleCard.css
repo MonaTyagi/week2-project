@@ -1,0 +1,10 @@
+.ArticleCard {
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.ArticleImg {
+  max-width: 100%;
+  height: auto;
+}
