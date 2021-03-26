@@ -8,7 +8,7 @@ export default function MainContent() {
 
   useEffect(() => {
     async function getRecipes() {
-      if (counter < 5) {
+      if (counter < 4) {
         set_counter(counter + 1);
       }
       const URL = "https://www.themealdb.com/api/json/v1/1/random.php";
@@ -25,18 +25,17 @@ export default function MainContent() {
   return (
     <div>
       <h1>This is the MainContent page</h1>
-      <br />
-      <h2>For now it's just showing one random recipe on each render</h2>
       <div>
-        {recipe.length > 1 ? (
-          <ArticleCard
-            imgurl={recipe[0][0].strMealThumb}
-            mealname={recipe[0][0].strMeal}
-            instructions={recipe[0][0].strInstructions}
-          />
-        ) : (
-          "Loading..."
-        )}
+        {recipe.length > 1
+          ? recipe.map((meal) => (
+              <ArticleCard
+                imgurl={meal[0].strMealThumb}
+                mealname={meal[0].strMeal}
+                instructions={meal[0].strInstructions}
+                key={meal[0].idMeal}
+              />
+            ))
+          : "Loading..."}
       </div>
     </div>
   );
